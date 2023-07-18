@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+// import { useEffect } from "react";
+import * as React from "react";
+// import * as ReactDOM from "react-DOM/client";
+// import {
+//   createBrowweRouter,
+//   RouterProvider,
+// } from "react-router-dom";
 
-function App() {
+import Dashboard from "./Dashboard";
+import Sightseeing from "./Sightseeing";
+import IntakeForm from "./IntakeForm";
+
+// const router = createBrowweRouter ([
+//   {
+//     path: "/",
+//     element: <div>Hello World</div>
+
+//   }
+// ])
+export default function App() {
+
+  // useEffect(() => {
+  //   getDestinationsData()
+  // }, [])
+
+  const getAPI = async () => {
+    try {
+      const response = await fetch("/api")
+      const data = await response.json()
+      console.log("data", data)
+    } catch (error) {
+      console.log("Error Fetching Data", error)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>Same Few Outfits</div>
+      <button onClick={getAPI}>get data</button>
+      <Dashboard/>
+      <Sightseeing/>
+      <IntakeForm/>
+      <table>
+        <thead>
+          <tr>
+            <th>Destination</th>
+            <th>Sights Explored</th>
+            <th>Picture</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+
+    </>
   );
 }
 
-export default App;
