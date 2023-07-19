@@ -14,10 +14,6 @@ const pool = new Pool({
 
 app.use(express.json())
 
-//testing api call
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server" })
-})
 
 //getting destinations data
 app.get("/api/destinationsData", (req, res) => {

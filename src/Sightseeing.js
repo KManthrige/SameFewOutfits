@@ -4,7 +4,7 @@ export default function Sightseeing() {
         try {
           const response = await fetch ("api/sightseeingData")
           const data = await response.json()
-          console.log("site seeing", data)
+          console.log("sightseeing", data)
         } catch (error) {
           console.log("Error Fetching Data", error)
         }

@@ -1,10 +1,5 @@
 // import { useEffect } from "react";
-import * as React from "react";
-// import * as ReactDOM from "react-DOM/client";
-// import {
-//   createBrowweRouter,
-//   RouterProvider,
-// } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 import Dashboard from "./Dashboard";
 import Sightseeing from "./Sightseeing";
@@ -23,37 +18,43 @@ export default function App() {
   //   getDestinationsData()
   // }, [])
 
-  const getAPI = async () => {
-    try {
-      const response = await fetch("/api")
-      const data = await response.json()
-      console.log("data", data)
-    } catch (error) {
-      console.log("Error Fetching Data", error)
-    }
-  }
 
   return (
     <>
-      <div>Same Few Outfits</div>
-      <button onClick={getAPI}>get data</button>
-      <Dashboard/>
-      <Sightseeing/>
-      <IntakeForm/>
-      <table>
-        <thead>
-          <tr>
-            <th>Destination</th>
-            <th>Sights Explored</th>
-            <th>Picture</th>
-            <th>Comments</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div>
+        <div>Same Few Outfits</div>
 
-        </tbody>
-      </table>
+      </div>
+      <nav>
+        <ul>
+          <Link to="/intakeForm">IntakeForm</Link>
+          <br />
+          <Link to="/dashboard">Dashboard</Link>
+          <br />
+          <Link to="/sightseeing">Sightseeing</Link>
+        </ul>
+      </nav>
+      <Routes>
 
+        {/* <Dashboard />
+        <Sightseeing /> */}
+        <Route path="/intakeForm" element={<IntakeForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/sightseeing" element={<Sightseeing />} />
+        {/* <table>
+          <thead>
+            <tr>
+              <th>Destination</th>
+              <th>Sights Explored</th>
+              <th>Picture</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table> */}
+      </Routes>
     </>
   );
 }
