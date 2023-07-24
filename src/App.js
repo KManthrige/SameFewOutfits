@@ -5,13 +5,6 @@ import Dashboard from "./Dashboard";
 import Sightseeing from "./Sightseeing";
 import IntakeForm from "./IntakeForm";
 
-// const router = createBrowweRouter ([
-//   {
-//     path: "/",
-//     element: <div>Hello World</div>
-
-//   }
-// ])
 export default function App() {
 
   // useEffect(() => {
@@ -27,17 +20,15 @@ export default function App() {
       </div>
       <nav>
         <ul>
-          <Link to="/intakeForm">IntakeForm</Link>
+          <Link to="/intakeForm">Submit New</Link>
           <br />
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard">Snapshot</Link>
           <br />
           <Link to="/sightseeing">Sightseeing</Link>
         </ul>
       </nav>
       <Routes>
 
-        {/* <Dashboard />
-        <Sightseeing /> */}
         <Route path="/intakeForm" element={<IntakeForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/sightseeing" element={<Sightseeing />} />

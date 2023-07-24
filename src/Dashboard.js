@@ -11,6 +11,7 @@ export default function Dashboard(){
       }
     return (
         <>
+             <div classname="card"></div>
               <button onClick= {getDestinationsData} >get destinations</button>
         </>
     )

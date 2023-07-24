@@ -25,7 +25,6 @@ app.get("/api/destinationsData", (req, res) => {
         }
         res.json(result.rows)
     })
-
 })
 
 //getting sightseeting data
@@ -37,6 +36,20 @@ app.get("/api/sightseeingData", (req, res) => {
             return
         }
         res.json(result.rows)
+    })
+})
+
+app.post("/api/addIntake", (req, res) => {
+    const { destination, sights, comments, base64String } = req.body
+    console.log("post req", req.body)
+    //SQL code
+    pool.query("INSERT INTO sightseeing (destination, sights, comments, pictures) VALUES ($1, $2, $3, $4)", [destination, sights, comments, base64String], (error, result) => {
+        if (error) {
+            console.log("Error Executing Query", error)
+            res.json(500).json({ error: "Internal Server Error" })
+            return
+        }
+        res.json({ message: "Data Inserted Successfully" })
     })
 })
 
