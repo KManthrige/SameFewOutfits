@@ -20,11 +20,11 @@ export default function App() {
       </div>
       <nav>
         <ul>
-          <Link to="/intakeForm">Submit New</Link>
+          <Link to="/intakeForm">Submissions</Link>
           <br />
-          <Link to="/dashboard">Snapshot</Link>
+          <Link to="/dashboard">Profile</Link>
           <br />
-          <Link to="/sightseeing">Sightseeing</Link>
+          <Link to="/sightseeing">Gallery</Link>
         </ul>
       </nav>
       <Routes>
