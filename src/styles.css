@@ -1,0 +1,38 @@
+.title{
+    color: green;
+    font-size: 70px;
+    padding: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+/* .navigation{
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: lightslategray;
+    position: fixed;
+    top: 0;
+    width: 100%;
+} */
+
+.links {
+    display: flex;
+    padding-left: 10px;
+
+}
+
+.router {
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    padding: 10px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.router:hover, .router:active {
+    background-color: aquamarine;
+    color: white;
+}

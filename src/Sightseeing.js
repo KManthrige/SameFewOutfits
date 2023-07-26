@@ -21,7 +21,19 @@ useEffect(() => {
         <>
               <button onClick={getSightseeing}>sightseeing</button>
               {data && data.length > 0 ?  <img src={data[4].pictures} alt="pic" width={"500"} height={"600"}/> : null}
-             
+                     {/* <table>
+          <thead>
+            <tr>
+              <th>Destination</th>
+              <th>Sights Explored</th>
+              <th>Picture</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table> */}
         </>
     )
 }

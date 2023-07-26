@@ -1,9 +1,10 @@
 // import { useEffect } from "react";
 import { Route, Routes, Link } from "react-router-dom";
 
-import Dashboard from "./Dashboard";
+import Dashboard from "./dashboard";
 import Sightseeing from "./Sightseeing";
 import IntakeForm from "./IntakeForm";
+import './styles.css';
 
 export default function App() {
 
@@ -15,37 +16,26 @@ export default function App() {
   return (
     <>
       <div>
-        <div>Same Few Outfits</div>
+        <div className="title">Same Few Outfits</div>
+
 
       </div>
-      <nav>
-        <ul>
-          <Link to="/intakeForm">Submissions</Link>
+      <nav className="navigation">
+        <ul className="links">
+          <Link to="/intakeForm" className="router">New Trip</Link>
           <br />
-          <Link to="/dashboard">Profile</Link>
+          <Link to="/dashboard" className="router">Dashboard</Link>
           <br />
-          <Link to="/sightseeing">Gallery</Link>
+          <Link to="/sightseeing" className="router">Gallery</Link>
         </ul>
       </nav>
       <Routes>
-
         <Route path="/intakeForm" element={<IntakeForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/sightseeing" element={<Sightseeing />} />
-        {/* <table>
-          <thead>
-            <tr>
-              <th>Destination</th>
-              <th>Sights Explored</th>
-              <th>Picture</th>
-              <th>Comments</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table> */}
       </Routes>
+
+      <div className="card"></div>
     </>
   );
 }

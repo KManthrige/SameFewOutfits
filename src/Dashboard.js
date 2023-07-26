@@ -1,4 +1,4 @@
-import Map from "./Map"
+// import Map from "./Map"
 
 export default function Dashboard() {
     const getDestinationsData = async () => {
@@ -11,25 +11,29 @@ export default function Dashboard() {
         }
     }
 
-    // const fetchMap = async() => {
-    //     try {
-    //         const apiKey = process.env.REACT_APP_API_KEY
-    //         const response = await fetch()
-    //     } catch (error) {
-
-    //     }
-    // }
+    const fetchMap = async () => {
+        try {
+            //const city = "London"
+            // const country = "England"
+            const apiKey = process.env.REACT_APP_API_KEY
+            console.log("api key", apiKey)
+            const response = await fetch("https://api.api-ninjas.com/v1/geocoding?city=Minneapolis&country=USA", {
+                headers: { 'X-Api-Key': apiKey },
+            })
+            const data = await response.json()
+            console.log("data", data)
+        } catch (error) {
+            console.log("error loading api", error)
+        }
+    }
 
     return (
         <>
             <div className="card"></div>
             <button onClick={getDestinationsData} >get destinations</button>
-            <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
-                type="text/javascript" charset="utf-8"></script>
-            <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
-                type="text/javascript" charset="utf-8"></script>
+            <button onClick={fetchMap}>Map</button>
 
-                <Map/>
+
         </>
     )
 }

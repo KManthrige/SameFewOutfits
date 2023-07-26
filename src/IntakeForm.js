@@ -66,6 +66,7 @@ export default function IntakeForm() {
 
     return (
         <>
+        <div>This is the intake form</div>
             <div className="instructions">Complete and submit this form to save a new travel memory</div>
             <div>Destination</div>
             <input name="destination" className="destination" placeholder="Destination" onChange={handleIntake} value={addNew.destination} />
