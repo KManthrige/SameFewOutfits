@@ -24,7 +24,7 @@ export default function App() {
         <ul className="links">
           <Link to="/intakeForm" className="router">New Trip</Link>
           <br />
-          <Link to="/dashboard" className="router">Dashboard</Link>
+          <Link to="/" className="router">Dashboard</Link>
           <br />
           <Link to="/sightseeing" className="router">Gallery</Link>
         </ul>
@@ -34,8 +34,6 @@ export default function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/sightseeing" element={<Sightseeing />} />
       </Routes>
-
-      <div className="card"></div>
     </>
   );
 }

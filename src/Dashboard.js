@@ -1,4 +1,6 @@
 // import Map from "./Map"
+import Cards from "./Cards"
+import Car from "./pictures/Car.jpg"
 
 export default function Dashboard() {
     const getDestinationsData = async () => {
@@ -27,12 +29,16 @@ export default function Dashboard() {
         }
     }
 
+
     return (
         <>
-            <div className="card"></div>
+        <div className="container">
+        <Cards img={Car} />
+        <Cards/>
+        <Cards/>
+        </div>
             <button onClick={getDestinationsData} >get destinations</button>
             <button onClick={fetchMap}>Map</button>
-
 
         </>
     )

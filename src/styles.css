@@ -36,3 +36,22 @@
     background-color: aquamarine;
     color: white;
 }
+
+.container {
+    display: flex;
+}
+
+.cards {
+    height: 200px;
+    width: 200px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 30px;
+    background-color: bisque;
+    margin: 20px;
+
+}
+
+..text-overlay {
+    color: aliceblue;
+}
