@@ -52,6 +52,8 @@
 
 }
 
-..text-overlay {
-    color: aliceblue;
+.text-overlay {
+
+    color: rgb(129, 8, 83);
+    font-size: large;
 }

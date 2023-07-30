@@ -1,6 +1,8 @@
 // import Map from "./Map"
 import Cards from "./Cards"
 import Car from "./pictures/Car.jpg"
+import './styles.css';
+
 
 export default function Dashboard() {
     const getDestinationsData = async () => {
