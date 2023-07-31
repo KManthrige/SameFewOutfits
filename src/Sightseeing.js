@@ -17,16 +17,16 @@ export default function Sightseeing() {
   const deleteData = async (id) => {
     try {
       const response = await fetch(`/api/deleteData/${id}`, {
-        method:"DELETE"
+        method: "DELETE"
       })
       const data = await response.json()
       console.log("deleted data", data)
-getGallery()
+      getGallery()
     } catch (error) {
       console.log("Error deleting item")
 
     }
-    
+
   }
 
   useEffect(() => {

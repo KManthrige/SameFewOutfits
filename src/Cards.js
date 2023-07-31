@@ -6,7 +6,7 @@ export default function Cards(props, {handleTextOverlay}) {
         <>
             <div className="cards" >
                 <img className="img" src={props.img} alt="pic"/>
-                <div className="text-overlay" onClick={() => handleTextOverlay()}>{handleTextOverlay}</div>
+                <div className="text-overlay">{handleTextOverlay}</div>
             </div>
         </>
     )

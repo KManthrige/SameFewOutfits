@@ -39,6 +39,17 @@ app.get("/api/sightseeingData", (req, res) => {
     })
 })
 
+app.get("/api/sightseeingData/totDestinations", (req, res) => {
+    pool.query("SELECT COUNT(DISTINCT destination) FROM sightseeing", (error, result) => {
+        if (error) {
+            console.log("Error Executing Query", error)
+            res.status(500).json({ error: "Internal Server Error" })
+            return
+        }
+        res.json(result.rows)
+    })
+})
+
 app.post("/api/addIntake", (req, res) => {
     const { destination, sights, comments, base64String } = req.body
     console.log("post req", req.body)

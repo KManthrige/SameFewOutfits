@@ -1,5 +1,5 @@
 // import Map from "./Map"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Cards from "./Cards"
 import World from "./pictures/World.png"
 import Pin from "./pictures/Pin.png"
@@ -9,15 +9,17 @@ import './styles.css';
 
 export default function Dashboard() {
 
+    const [results, setRestults] =useState([]);
     const [city, setCity] = useState("");
-    const [state, setState] = useState("");
     const [country, setCountry] = useState("");
+    const [destinationCount, setDestinationCount] = useState(0);
 
-    const getDestinationsData = async () => {
+    const getTotDestinations = async () => {
         try {
-            const response = await fetch("/api/destinationsData")
+            const response = await fetch("/api/sightseeingData/totDestinations")
             const data = await response.json()
-            console.log("destinations", data)
+            console.log("count destinations", data)
+            setDestinationCount(data.count)
         } catch (error) {
             console.log("Error Fetching Data", error)
         }
@@ -30,46 +32,49 @@ export default function Dashboard() {
                 headers: { 'X-Api-Key': apiKey },
             })
             const data = await response.json()
-            console.log("data", data)
+            console.log(data)
+            setRestults(data)
         } catch (error) {
             console.log("error loading api", error)
         }
-    }
-
-    // const handleCards = () => {
-    //     console.log("handle cards")
-    // }
-
-    const handleTextOverlay = () => {
-        console.log("text")
     }
 
     const handleCity = (event) => {
         console.log("city", event.target.value)
         setCity(event.target.value)
     }
-    // const handleState = (event) => {
-    //     console.log("state", event.target.value)
-    //     setState(event.target.value)
-    // }
+
     const handleCountry = (event) => {
         console.log("country", event.target.value)
         setCountry(event.target.value)
     }
 
+useEffect (() => {
+    console.log("number of destinations", destinationCount)
+}, [destinationCount])
+ 
     return (
         <>
             <div className="container">
-                <Cards img={World} onClick={handleTextOverlay} />
-                <Cards img={Pin} />
+                <Cards img={World}></Cards>
+                <Cards img={Pin}/>
                 <Cards img={Suitcase} />
+            </div>
+            <button onClick={getTotDestinations}>Total Destinations</button>
+            <div>
+                <h2>Total Destinations: {destinationCount}</h2>
             </div>
             <div>
                 <h4>Find destinations</h4>
                 <input className="search" placeholder="City" onChange={handleCity} />
-                {/* <input className="search" placeholder="State" onChange={handleState}/> */}
                 <input className="search" placeholder="Country" onChange={handleCountry} />
-
+            </div>
+            <div>
+                <ul>
+                    {results.map((item) => (
+                        <li key={item.id}>{item.name}, {item.state}, {item.country}</li>
+                    ))}
+                </ul>
             </div>
             {/* <button onClick={getDestinationsData} >get destinations</button> */}
             <button onClick={fetchMap}>Search</button>
