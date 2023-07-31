@@ -14,19 +14,19 @@ export default function Sightseeing() {
     }
   }
 
-  const deleteData = async () => {
-    const id = 1
+  const deleteData = async (id) => {
     try {
       const response = await fetch(`/api/deleteData/${id}`, {
         method:"DELETE"
       })
       const data = await response.json()
       console.log("deleted data", data)
-
+getGallery()
     } catch (error) {
       console.log("Error deleting item")
 
     }
+    
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function Sightseeing() {
 
   return (
     <>
-<button onClick={deleteData}>Delete</button>
+
       {/* {data && data.length > 0 ?  <img src={data[4].pictures} alt="pic" width={"500"} height={"600"}/> : null} */}
       <div>
 
@@ -61,6 +61,7 @@ export default function Sightseeing() {
                 )
                 }</td>
                 <td>{item.comments}</td>
+                <td><button onClick={() => deleteData(item.id)}>Delete</button></td>
               </tr>
             )}
           </tbody>

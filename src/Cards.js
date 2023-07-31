@@ -1,23 +1,12 @@
 import './styles.css';
 
-export default function Cards(props) {
-  
-    console.log("image", props)
+export default function Cards(props, {handleTextOverlay}) {
 
-    const handleCards = () => {
-        console.log("handle cards")
-    }
-
-const handleTextOverlay = () => {
-    console.log("text")
-}
-
-    return (
+      return (
         <>
-            <div className="cards" onClick={handleCards} >cards 
-            <img src={props.img} alt="pic" height="100%" width="100%"/>
-            <div className="text-overlay" onChange={handleTextOverlay}>text on picture</div>
-            
+            <div className="cards" >
+                <img className="img" src={props.img} alt="pic"/>
+                <div className="text-overlay" onClick={() => handleTextOverlay()}>{handleTextOverlay}</div>
             </div>
         </>
     )
