@@ -6,26 +6,37 @@ export default function Sightseeing() {
 
   const getGallery = async () => {
     try {
-      const response = await fetch("api/sightseeingData")
-      const gallery = await response.json()
-      setGallery(gallery)
+      const response = await fetch("/api/sightseeingData")
+      const data = await response.json()
+      setGallery(data)
     } catch (error) {
       console.log("Error Fetching Data", error)
     }
   }
 
-  const displayGallery = () => {
-    console.log("display gallery", gallery)
+  const deleteData = async () => {
+    const id = 1
+    try {
+      const response = await fetch(`/api/deleteData/${id}`, {
+        method:"DELETE"
+      })
+      const data = await response.json()
+      console.log("deleted data", data)
+
+    } catch (error) {
+      console.log("Error deleting item")
+
+    }
   }
 
   useEffect(() => {
-    console.log(gallery)
-  }, [gallery])
+    console.log("useEffect", gallery)
+    getGallery()
+  }, [])
 
   return (
     <>
-      <button onClick={getGallery}>get</button>
-      <button onClick={displayGallery}>display</button>
+<button onClick={deleteData}>Delete</button>
       {/* {data && data.length > 0 ?  <img src={data[4].pictures} alt="pic" width={"500"} height={"600"}/> : null} */}
       <div>
 
@@ -44,11 +55,11 @@ export default function Sightseeing() {
                 <td>{item.destination}</td>
                 <td>{item.sights}</td>
                 <td>{item.pictures ? (
-                  <img src={item.pictures} alt="pic" width="100%" height="100%"/>
+                  <img src={item.pictures} alt="pic" width="100%" height="100%" />
                 ) : (
                   "No Image Available"
                 )
-              }</td>
+                }</td>
                 <td>{item.comments}</td>
               </tr>
             )}

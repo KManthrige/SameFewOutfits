@@ -53,6 +53,18 @@ app.post("/api/addIntake", (req, res) => {
     })
 })
 
+app.delete("/api/deleteData/:id", (req, res) => {
+    const id = req.params.id
+    pool.query("DELETE from sightseeing WHERE id=$1", [id], (error, result) => {
+        if (error) {
+            console.log("Error executing query", error)
+            res.status(500).json({ error: "Internal Server Error" })
+            return
+        }
+        res.json({ message: "Data Deleted Successfully" })
+    })
+})
+
 app.listen(PORT, () => {
     console.log("Server listening on", PORT)
 })
